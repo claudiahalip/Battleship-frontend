@@ -1,30 +1,27 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Home() {
-
-  const [message, setMessage] = useState("");
+const Home = function () {
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const API_url = "http://localhost:8080/";
-    const fetchMessage = async () =>{
-      try{
-        const response = await axios.get(API_url);
+    const API_URL = 'http://localhost:8080/';
+    const fetchMessage = async () => {
+      try {
+        const response = await axios.get(API_URL);
         setMessage(response.data);
-      }
-      catch(error){
-        console.log("error", error);
+      } catch (error) {
+        console.log('error', error);
       }
     };
     fetchMessage();
-  }, [])
+  }, []);
 
   return (
     <div className="Home">
       {message}
     </div>
   );
-  }
-  
-  export default Home;
-  
+};
+
+export default Home;
