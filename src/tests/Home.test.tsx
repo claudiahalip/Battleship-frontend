@@ -1,4 +1,3 @@
-// __tests__/fetch.test.js
 import React from 'react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
