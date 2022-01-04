@@ -6,7 +6,7 @@ const ComputerBoard: React.FC = function () {
 
   return (
     <div className="computerBoard">
-        {computerBoardCtx && computerBoardCtx.name}
+      {computerBoardCtx && computerBoardCtx.name}
     </div>
   );
 };

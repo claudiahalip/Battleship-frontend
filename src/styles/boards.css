@@ -1,0 +1,10 @@
+.playerBoard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 330px;
+}
+.cell {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+}

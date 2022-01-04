@@ -18,7 +18,7 @@ const defaultBoard = {
 };
 export const PlayerBoardContext = createContext <PlayerBoardInterface | null>(null);
 
-export const PlayerBoardContextProvider = (props : any) => {
+export var PlayerBoardContextProvider = function (props : any) {
   const [playerBoard, setPlayerBoard] = useState(defaultBoard);
 
   useEffect(() => {
