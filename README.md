@@ -11,11 +11,15 @@
 
 - To run the program locally, git clone this repo to the folder of your choice.
 
+- Make sure you have installed a node package manager. Instructions can be found [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a npm version greater or equal to 8.1.0.
+
 - Install all the dependencies by typing ```npm install``` into the terminal
 
 - To start the front-end server, cd into the root directory and type ```npm start``` into the terminal.
 
 - To hook up the front-end with a backend, go to one of the backends listed above and follow the instructions there to start the backend server.
+
+- A backend needs to be running in order to play the game.
 
 - To run the tests, type ```npm test``` into the terminal
 
