@@ -10,6 +10,10 @@
     "@types/node": "^16.11.14",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "axios": "^0.24.0",
+    "eslint-plugin-jest": "^25.3.0",
+    "jest": "^27.4.5",
+    "msw": "^0.36.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -20,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint '**/*.tsx' --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +44,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "msw": "^0.36.3"
   }
 }
