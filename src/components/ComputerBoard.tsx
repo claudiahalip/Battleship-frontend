@@ -5,7 +5,9 @@ const ComputerBoard: React.FC = function () {
   const computerBoardCtx = useContext(ComputerBoardContext);
 
   return (
-    <div className="computerBoard">{computerBoardCtx && computerBoardCtx.name}</div>
+    <div className="computerBoard">
+        {computerBoardCtx && computerBoardCtx.name}
+    </div>
   );
 };
 
