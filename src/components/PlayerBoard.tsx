@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PlayerBoardContext } from '../context/player_board_context';
+import { PlayerBoardContext } from '../context/PlayerBoardContext';
 import Cell, { CellInterface } from './Cell';
 
 const PlayerBoard: React.FC = function () {

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ComputerBoardContext } from '../context/computer_board_context';
+import { ComputerBoardContext } from '../context/ComputerBoardContext';
 import Cell, { CellInterface } from './Cell';
 
 const ComputerBoard: React.FC = function () {

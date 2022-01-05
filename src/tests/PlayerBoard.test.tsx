@@ -4,7 +4,7 @@ import 'jest';
 import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
-import { PlayerBoardContext } from '../context/player_board_context';
+import { PlayerBoardContext } from '../context/PlayerBoardContext';
 import PlayerBoard from '../components/PlayerBoard';
 
 jest.mock('axios');

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 import ComputerBoard from '../components/ComputerBoard';
-import { ComputerBoardContext } from '../context/computer_board_context';
+import { ComputerBoardContext } from '../context/ComputerBoardContext';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
