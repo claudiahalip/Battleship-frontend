@@ -1,9 +1,9 @@
-  import axios from 'axios';
+import axios from 'axios';
+import { getBoardsURL } from '../api/api';
 
  const fetchBoards = async () => {
-    const apiURL = 'http://localhost:8080/boards';
       try {
-        const response = await axios.get(apiURL);
+        const response = await axios.get(getBoardsURL);
         const boards = response.data;
 
         return (boards);
