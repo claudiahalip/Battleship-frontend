@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/boards.css'
+import './styles/boards.css';
+import './styles/home.css';
 import App from './App';
 
 ReactDOM.render(

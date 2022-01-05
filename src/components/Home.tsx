@@ -19,7 +19,7 @@ const Home = function () {
 
   return (
     <div className="Home">
-      {message}
+      <h1 className="welcome-message">{message}</h1>
     </div>
   );
 };

@@ -10,12 +10,14 @@ const App = function () {
   return (
     <div className="App">
       <Home />
-      <PlayerBoardContextProvider>
-        <PlayerBoard />
-      </PlayerBoardContextProvider>
-      <ComputerBoardContextProvider>
-        <ComputerBoard />
-      </ComputerBoardContextProvider>
+      <div className="board-box">
+        <PlayerBoardContextProvider>
+          <PlayerBoard />
+        </PlayerBoardContextProvider>
+        <ComputerBoardContextProvider>
+          <ComputerBoard />
+        </ComputerBoardContextProvider>
+      </div>
     </div>
   );
 };

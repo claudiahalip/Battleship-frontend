@@ -12,9 +12,9 @@ const PlayerBoard: React.FC = function () {
   ));
 
   return (
-    <div className="playerBoard-outer">
+    <div className="board-outer">
       <h2>{playerBoardCtx && playerBoardCtx.name}</h2>
-      <div className='playerBoard-grid'>
+      <div className='board-grid'>
           {gridMap}
       </div>
     </div>

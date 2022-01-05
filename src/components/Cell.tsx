@@ -1,4 +1,5 @@
 import React from 'react';
+import waves from '../assets/waves.png';
 
 export interface CellInterface {
     shipName: string | null,
@@ -13,9 +14,10 @@ const Cell: React.FC<CellInterface> = function (props : any) {
 
   return (
     <div className="cell" data-id={`row:${props.row}col:${props.column}`}>
-      {props.shipName ? props.shipName : "null"}
+      {props.shipName ? props.shipName : ""}
     </div>
   );
 };
+
 
 export default Cell;
