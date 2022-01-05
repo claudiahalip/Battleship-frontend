@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';
@@ -33,10 +33,8 @@ describe('<ComputerBoard />', () => {
       },
     };
 
-    const memoResponse = useMemo(() => response.data.computerBoard, []);
-
     render(
-      <ComputerBoardContext.Provider value={memoResponse}>
+      <ComputerBoardContext.Provider value={response.data.computerBoard}>
         <ComputerBoard />
       </ComputerBoardContext.Provider>,
     );
@@ -68,10 +66,8 @@ describe('<ComputerBoard />', () => {
       },
     };
 
-    const memoResponse = useMemo(() => response.data.computerBoard, []);
-
     render(
-      <ComputerBoardContext.Provider value={memoResponse}>
+      <ComputerBoardContext.Provider value={response.data.computerBoard}>
         <ComputerBoard />
       </ComputerBoardContext.Provider>,
     );
