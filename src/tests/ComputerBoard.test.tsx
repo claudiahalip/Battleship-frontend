@@ -58,4 +58,37 @@ describe('<ComputerBoard />', () => {
 
     expect(container.textContent).toBe('Computer Board');
   });
+
+  it('renders a grid', () => {
+        const response = {
+        data: {
+            playerBoard: {},
+            computerBoard: {
+            name: 'Computer Board', grid: [[
+                {
+                    "isHit": false,
+                    "isShip": false,
+                    "shipName": null
+                },
+                {
+                    "isHit": false,
+                    "isShip": false,
+                    "shipName": null
+                }]], shipList: [], everyShipSunk: false, size: 2,
+            },
+        },
+        };
+    act(() => {
+        ReactDOM.render(
+            (
+          <ComputerBoardContext.Provider value={response.data.computerBoard}>
+            <ComputerBoard />
+          </ComputerBoardContext.Provider>
+        ), container,
+      );
+    });
+    let board = container.firstChild?.lastChild;
+    
+    
+  })
 });
