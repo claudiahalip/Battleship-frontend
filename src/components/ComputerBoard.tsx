@@ -7,15 +7,21 @@ const ComputerBoard: React.FC = function () {
 
   const gridMap = computerBoardCtx?.grid.map((row, idx) => (
     row.map((cell : CellInterface, jdx : number) => (
-      <Cell column={jdx} row={idx} shipName={cell.shipName} isHit={cell.isHit} isShip={cell.isShip} />
+      <Cell
+        column={jdx}
+        row={idx}
+        shipName={cell.shipName}
+        isHit={cell.isHit}
+        isShip={cell.isShip}
+      />
     ))
   ));
 
   return (
-    <div className="board-outer">
-      <h2>{computerBoardCtx && computerBoardCtx.name}</h2>
-      <div className='board-grid'>
-          {gridMap}
+    <div id="computer-board" className="board-outer">
+      <h2 className="board-title">{computerBoardCtx && computerBoardCtx.name}</h2>
+      <div className="board-grid">
+        {gridMap}
       </div>
     </div>
   );

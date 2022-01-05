@@ -25,3 +25,5 @@
 -   To run the tests, type `npm test` into the terminal
 
 ##Sources
+
+waves: https://www.clipartmax.com/download/m2i8N4b1d3i8Z5K9_wave-waves-ocean-sea-water-comments-sea-wave-icon-png/

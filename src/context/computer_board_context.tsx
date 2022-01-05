@@ -18,7 +18,7 @@ const defaultBoard = {
 };
 export const ComputerBoardContext = createContext <ComputerBoardInterface | null>(null);
 
-export var ComputerBoardContextProvider = function (props : any) {
+export const ComputerBoardContextProvider = function (props : any) {
   const [computerBoard, setComputerBoard] = useState(defaultBoard);
 
   useEffect(() => {
@@ -36,5 +36,9 @@ export var ComputerBoardContextProvider = function (props : any) {
     fetchBoards();
   }, []);
 
-  return (<ComputerBoardContext.Provider value={computerBoard}>{props.children}</ComputerBoardContext.Provider>);
+  return (
+    <ComputerBoardContext.Provider value={computerBoard}>
+      {props.children}
+    </ComputerBoardContext.Provider>
+  );
 };

@@ -4,7 +4,7 @@ import 'jest';
 import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
-import { PlayerBoardContext, PlayerBoardContextProvider } from '../context/player_board_context';
+import { PlayerBoardContext } from '../context/player_board_context';
 import PlayerBoard from '../components/PlayerBoard';
 
 jest.mock('axios');
@@ -55,5 +55,40 @@ describe('<PlayerBoard />', () => {
     });
 
     expect(container.textContent).toBe('Player Board');
+  });
+
+  it('renders a grid', () => {
+    const response = {
+      data: {
+        playerBoard: {
+          name: 'Player Board',
+          grid: [[
+            {
+              isHit: false,
+              isShip: false,
+              shipName: null,
+            },
+            {
+              isHit: false,
+              isShip: false,
+              shipName: null,
+            }]],
+          shipList: [],
+          everyShipSunk: false,
+          size: 2,
+        },
+        computerBoard: {},
+      },
+    };
+    act(() => {
+      ReactDOM.render(
+        (
+          <PlayerBoardContext.Provider value={response.data.playerBoard}>
+            <PlayerBoard />
+          </PlayerBoardContext.Provider>
+        ), container,
+      );
+    });
+    expect(container.getElementsByClassName('cell').length).toBe(2);
   });
 });

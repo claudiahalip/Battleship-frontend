@@ -2,11 +2,10 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';
-import { getByTestId, render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
 import ComputerBoard from '../components/ComputerBoard';
-import { ComputerBoardContext, ComputerBoardContextProvider } from '../context/computer_board_context';
+import { ComputerBoardContext } from '../context/computer_board_context';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -60,35 +59,37 @@ describe('<ComputerBoard />', () => {
   });
 
   it('renders a grid', () => {
-        const response = {
-        data: {
-            playerBoard: {},
-            computerBoard: {
-            name: 'Computer Board', grid: [[
-                {
-                    "isHit": false,
-                    "isShip": false,
-                    "shipName": null
-                },
-                {
-                    "isHit": false,
-                    "isShip": false,
-                    "shipName": null
-                }]], shipList: [], everyShipSunk: false, size: 2,
+    const response = {
+      data: {
+        playerBoard: {},
+        computerBoard: {
+          name: 'Computer Board',
+          grid: [[
+            {
+              isHit: false,
+              isShip: false,
+              shipName: null,
             },
+            {
+              isHit: false,
+              isShip: false,
+              shipName: null,
+            }]],
+          shipList: [],
+          everyShipSunk: false,
+          size: 2,
         },
-        };
+      },
+    };
     act(() => {
-        ReactDOM.render(
-            (
+      ReactDOM.render(
+        (
           <ComputerBoardContext.Provider value={response.data.computerBoard}>
             <ComputerBoard />
           </ComputerBoardContext.Provider>
         ), container,
       );
     });
-    let board = container.firstChild?.lastChild;
-    
-    
-  })
+    expect(container.getElementsByClassName('cell').length).toBe(2);
+  });
 });

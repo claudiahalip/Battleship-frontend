@@ -1,5 +1,5 @@
 import React from 'react';
-import waves from '../assets/waves.png';
+import waves from '../assets/wave.png';
 
 export interface CellInterface {
     shipName: string | null,
@@ -10,14 +10,15 @@ export interface CellInterface {
 }
 
 const Cell: React.FC<CellInterface> = function (props : any) {
-  // int row, int col, string Shipname, boolean isShip, boolean isHit
-
+  
   return (
-    <div className="cell" data-id={`row:${props.row}col:${props.column}`}>
-      {props.shipName ? props.shipName : ""}
-    </div>
+
+    props.isShip ? <div className="cell ship" data-id={`row:${props.row}col:${props.column}`}>{props.shipName}</div> : (
+      <div className="cell waves" data-id={`row:${props.row}col:${props.column}`}>
+        <img className="wave-pic" src={waves} alt="waves" />
+      </div>
+    )
   );
 };
-
 
 export default Cell;
