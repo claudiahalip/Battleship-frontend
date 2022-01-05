@@ -26,6 +26,12 @@
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": [ "warn", {"extensions": [".tsx"]} ],
         "func-names": "off",
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ],
         "import/extensions": [
             "error",
             "ignorePackages",

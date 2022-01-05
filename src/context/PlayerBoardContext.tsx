@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import axios from 'axios';
+import fetchBoards from '../actions/FetchBoards';
 
 export interface PlayerBoardInterface {
     name: String,
@@ -7,6 +7,10 @@ export interface PlayerBoardInterface {
     shipList: Array<any>,
     size: Number,
     everyShipSunk: boolean
+}
+
+interface PlayerBoardContextInterface{
+  children: React.ReactElement
 }
 
 const defaultBoard = {
@@ -18,27 +22,16 @@ const defaultBoard = {
 };
 export const PlayerBoardContext = createContext <PlayerBoardInterface | null>(null);
 
-export const PlayerBoardContextProvider = function (props : any) {
+export const PlayerBoardContextProvider = function ({ children } : PlayerBoardContextInterface) {
   const [playerBoard, setPlayerBoard] = useState(defaultBoard);
 
   useEffect(() => {
-    const apiURL = 'http://localhost:8080/boards';
-    const fetchBoards = async () => {
-      try {
-        const response = await axios.get(apiURL);
-        const boards = response.data;
-
-        setPlayerBoard(boards[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchBoards();
+    fetchBoards().then((result) => setPlayerBoard(result[0]));
   }, []);
 
   return (
     <PlayerBoardContext.Provider value={playerBoard}>
-      {props.children}
+      {children}
     </PlayerBoardContext.Provider>
   );
 };

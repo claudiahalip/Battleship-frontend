@@ -9,12 +9,13 @@ export interface CellInterface {
     isShip: boolean
 }
 
-const Cell: React.FC<CellInterface> = function (props : any) {
-  
+const Cell: React.FC<CellInterface> = function ({
+  shipName, isShip,
+}) {
   return (
 
-    props.isShip ? <div className="cell ship" data-id={`row:${props.row}col:${props.column}`}>{props.shipName}</div> : (
-      <div className="cell waves" data-id={`row:${props.row}col:${props.column}`}>
+    isShip ? <div className="cell ship" data-testid="cell">{shipName}</div> : (
+      <div className="cell waves" data-testid="cell">
         <img className="wave-pic" src={waves} alt="waves" />
       </div>
     )

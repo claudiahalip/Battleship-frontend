@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import ComputerBoard from '../components/ComputerBoard';
 import { ComputerBoardContext } from '../context/ComputerBoardContext';
 
@@ -11,17 +10,6 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('<ComputerBoard />', () => {
-  let container : HTMLElement;
-
-  beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
-  });
-
-  afterEach(() => {
-    document.body.removeChild(container);
-  });
-
   it('returns a computer board from the api', () => {
     const response = {
       data: {
@@ -45,17 +33,15 @@ describe('<ComputerBoard />', () => {
       },
     };
 
-    act(() => {
-      ReactDOM.render(
-        (
-          <ComputerBoardContext.Provider value={response.data.computerBoard}>
-            <ComputerBoard />
-          </ComputerBoardContext.Provider>
-        ), container,
-      );
-    });
+    const memoResponse = useMemo(() => response.data.computerBoard, []);
 
-    expect(container.textContent).toBe('Computer Board');
+    render(
+      <ComputerBoardContext.Provider value={memoResponse}>
+        <ComputerBoard />
+      </ComputerBoardContext.Provider>,
+    );
+
+    expect(screen.getByText('Computer Board')).toBeInTheDocument;
   });
 
   it('renders a grid', () => {
@@ -81,15 +67,14 @@ describe('<ComputerBoard />', () => {
         },
       },
     };
-    act(() => {
-      ReactDOM.render(
-        (
-          <ComputerBoardContext.Provider value={response.data.computerBoard}>
-            <ComputerBoard />
-          </ComputerBoardContext.Provider>
-        ), container,
-      );
-    });
-    expect(container.getElementsByClassName('cell').length).toBe(2);
+
+    const memoResponse = useMemo(() => response.data.computerBoard, []);
+
+    render(
+      <ComputerBoardContext.Provider value={memoResponse}>
+        <ComputerBoard />
+      </ComputerBoardContext.Provider>,
+    );
+    expect(screen.getAllByTestId('cell').length).toBe(2);
   });
 });

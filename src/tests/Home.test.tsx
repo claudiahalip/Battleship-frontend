@@ -1,4 +1,3 @@
-import React from 'react';
 import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';

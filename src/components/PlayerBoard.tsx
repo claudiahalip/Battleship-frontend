@@ -13,6 +13,7 @@ const PlayerBoard: React.FC = function () {
         shipName={cell.shipName}
         isHit={cell.isHit}
         isShip={cell.isShip}
+        key={`${Math.random()}`}
       />
     ))
   ));

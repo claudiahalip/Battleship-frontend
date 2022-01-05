@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import axios from 'axios';
+import fetchBoards from '../actions/FetchBoards';
 
 export interface ComputerBoardInterface {
     name: String,
@@ -7,6 +7,10 @@ export interface ComputerBoardInterface {
     shipList: Array<any>,
     size: Number,
     everyShipSunk: boolean
+}
+
+interface ComputerBoardContextProviderInterface{
+  children: React.ReactElement
 }
 
 const defaultBoard = {
@@ -18,27 +22,16 @@ const defaultBoard = {
 };
 export const ComputerBoardContext = createContext <ComputerBoardInterface | null>(null);
 
-export const ComputerBoardContextProvider = function (props : any) {
+export const ComputerBoardContextProvider = function ({ children } : ComputerBoardContextProviderInterface) {
   const [computerBoard, setComputerBoard] = useState(defaultBoard);
 
   useEffect(() => {
-    const apiURL = 'http://localhost:8080/boards';
-    const fetchBoards = async () => {
-      try {
-        const response = await axios.get(apiURL);
-        const boards = response.data;
-
-        setComputerBoard(boards[1]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchBoards();
+    fetchBoards().then((result) => setComputerBoard(result[1]));
   }, []);
 
   return (
     <ComputerBoardContext.Provider value={computerBoard}>
-      {props.children}
+      {children}
     </ComputerBoardContext.Provider>
   );
 };

@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import { PlayerBoardContext } from '../context/PlayerBoardContext';
 import PlayerBoard from '../components/PlayerBoard';
 
@@ -44,17 +43,15 @@ describe('<PlayerBoard />', () => {
       },
     };
 
-    act(() => {
-      ReactDOM.render(
-        (
-          <PlayerBoardContext.Provider value={response.data.playerBoard}>
-            <PlayerBoard />
-          </PlayerBoardContext.Provider>
-        ), container,
-      );
-    });
+    const memoResponse = useMemo(() => response.data.playerBoard, []);
 
-    expect(container.textContent).toBe('Player Board');
+    render(
+      <PlayerBoardContext.Provider value={memoResponse}>
+        <PlayerBoard />
+      </PlayerBoardContext.Provider>,
+    );
+
+    expect(screen.getAllByText('Player Board')).toBeInTheDocument;
   });
 
   it('renders a grid', () => {
@@ -80,15 +77,15 @@ describe('<PlayerBoard />', () => {
         computerBoard: {},
       },
     };
-    act(() => {
-      ReactDOM.render(
-        (
-          <PlayerBoardContext.Provider value={response.data.playerBoard}>
-            <PlayerBoard />
-          </PlayerBoardContext.Provider>
-        ), container,
-      );
-    });
-    expect(container.getElementsByClassName('cell').length).toBe(2);
+
+    const memoResponse = useMemo(() => response.data.playerBoard, []);
+
+    render(
+      <PlayerBoardContext.Provider value={memoResponse}>
+        <PlayerBoard />
+      </PlayerBoardContext.Provider>,
+    );
+
+    expect(screen.getAllByTestId('cell').length).toBe(2);
   });
 });
