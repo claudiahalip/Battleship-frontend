@@ -14,7 +14,7 @@ const Board: React.FC<BoardComponentInterface> = function ({ board }) {
         shipName={cell.shipName}
         isHit={cell.isHit}
         isShip={cell.isShip}
-        key={`${Math.random()}`}
+        key={`${new Date().getTime}`}
       />
     ))
   ));
