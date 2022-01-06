@@ -6,3 +6,11 @@ body {
     margin: 50px 0;
     font-size: 50px;
 }
+
+.game-box {
+    display: flex;
+    justify-content: space-between;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
