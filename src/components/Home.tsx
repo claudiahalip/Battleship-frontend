@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Home = function () {
+const Home: React.FC = function () {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Home = function () {
 
   return (
     <div className="Home">
-      {message}
+      <h1 className="welcome-message">{message}</h1>
     </div>
   );
 };
