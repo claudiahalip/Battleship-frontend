@@ -2,20 +2,20 @@ import React, { useState, createContext, useEffect } from 'react';
 import fetchBoards from '../actions/FetchBoards';
 
 export interface BoardInterface {
-    name: String,
-    grid: Array<any>,
-    shipList: Array<any>,
-    size: Number,
-    everyShipSunk: boolean
+    name: String;
+    grid: Array<any>;
+    shipList: Array<any>;
+    size: Number;
+    everyShipSunk: boolean;
 }
 
 export interface BoardsInterface {
-    playerBoard: BoardInterface,
-    computerBoard: BoardInterface
+    playerBoard: BoardInterface;
+    computerBoard: BoardInterface;
 }
 
-interface BoardsContextProviderInterface{
-  children: React.ReactElement
+interface BoardsContextProviderInterface {
+    children: React.ReactElement;
 }
 
 export const defaultBoard = {
@@ -28,7 +28,7 @@ export const defaultBoard = {
 
 export const BoardsContext = createContext<BoardsInterface | null>(null);
 
-export const BoardsContextProvider = function ({ children } : BoardsContextProviderInterface) {
+export const BoardsContextProvider = function ({ children }: BoardsContextProviderInterface) {
   const [playerBoard, setPlayerBoard] = useState(defaultBoard);
   const [computerBoard, setComputerBoard] = useState(defaultBoard);
 
@@ -43,9 +43,5 @@ export const BoardsContextProvider = function ({ children } : BoardsContextProvi
     playerBoard,
     computerBoard,
   };
-  return (
-    <BoardsContext.Provider value={boards}>
-      {children}
-    </BoardsContext.Provider>
-  );
+  return <BoardsContext.Provider value={boards}>{children}</BoardsContext.Provider>;
 };
