@@ -1,4 +1,4 @@
-.board-box {
+.boards-container {
     border: 2px solid black;
     display: flex;
     justify-content: flex-end;
