@@ -3,7 +3,7 @@ import React from 'react';
 const Instructions: React.FC = function(){
 
     return (
-      <div className="instuctions-box">
+      <div className="instructions-box">
         <h3>Instructions:</h3>
         <ul className="instructions-list">
           <li>You and your opponent are competing in a navy battle.</li>
