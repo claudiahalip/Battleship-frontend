@@ -29,7 +29,11 @@ const ShipsContainer: React.FC = function () {
         }
         return 'No Ships';
     });
-    return <div className="ships-container">{shipsMap}</div>;
+    return (
+        <div className="ships-container" data-testid="ships-container">
+            {shipsMap}
+        </div>
+    );
 };
 
 export default ShipsContainer;

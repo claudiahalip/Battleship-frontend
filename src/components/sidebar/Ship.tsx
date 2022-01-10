@@ -7,7 +7,11 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, isSunk, s
         // eslint-disable-next-line react/no-array-index-key
         <Cell shipName={name} row={0} column={0} isHit={false} isShip key={name + idx} />
     ));
-    return <div className={Ship.name}>{cellMap}</div>;
+    return (
+        <div className={Ship.name} data-testid="testShip">
+            {cellMap}
+        </div>
+    );
 };
 
 export default Ship;

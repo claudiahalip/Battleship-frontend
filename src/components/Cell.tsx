@@ -11,11 +11,11 @@ export interface CellInterface {
 
 const Cell: React.FC<CellInterface> = function ({ shipName, isShip }) {
     return isShip ? (
-        <div className="cell ship" data-testid="cell">
+        <div className="cell ship" data-testid="cell-ship">
             {shipName}
         </div>
     ) : (
-        <div className="cell waves" data-testid="cell">
+        <div className="cell waves" data-testid="cell-waves">
             <img className="wave-pic" src={waves} alt="waves" />
         </div>
     );

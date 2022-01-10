@@ -122,4 +122,63 @@ describe('<BoardContainer />', () => {
         );
         expect(screen.getAllByTestId('testGrid').length).toBe(2);
     });
+
+    it('renders all wave-cells', () => {
+        const response = {
+            data: {
+                playerBoard: {
+                    name: 'Player Board',
+                    grid: [
+                        [
+                            {
+                                isHit: false,
+                                isShip: false,
+                                shipName: null,
+                            },
+                            {
+                                isHit: false,
+                                isShip: false,
+                                shipName: null,
+                            },
+                            {
+                                isHit: false,
+                                isShip: false,
+                                shipName: null,
+                            },
+                        ],
+                    ],
+                    shipList: [],
+                    everyShipSunk: false,
+                    size: 0,
+                },
+                computerBoard: {
+                    name: 'Computer Board',
+                    grid: [
+                        [
+                            {
+                                isHit: false,
+                                isShip: false,
+                                shipName: null,
+                            },
+                            {
+                                isHit: false,
+                                isShip: false,
+                                shipName: null,
+                            },
+                        ],
+                    ],
+                    shipList: [],
+                    everyShipSunk: false,
+                    size: 2,
+                },
+            },
+        };
+
+        render(
+            <BoardsContext.Provider value={response.data}>
+                <BoardsContainer />
+            </BoardsContext.Provider>
+        );
+        expect(screen.getAllByTestId('cell-waves').length).toBe(5);
+    });
 });
