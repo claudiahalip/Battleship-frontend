@@ -10,15 +10,15 @@ const Sidebar: React.FC = function () {
     };
 
     return (
-        <div>
+        <div className="sidebar">
             {shipsVisible ? <ShipsContainer /> : <Instructions />}
 
             {shipsVisible ? (
-                <button className="start-game-button" type="button">
+                <button className="start-button" type="button">
                     Start Game
                 </button>
             ) : (
-                <button className="start-now-button" type="button" onClick={handleStartNow}>
+                <button className="start-button" type="button" onClick={handleStartNow}>
                     Start now
                 </button>
             )}

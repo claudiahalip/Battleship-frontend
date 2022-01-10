@@ -1,3 +1,7 @@
+.sidebar {
+    margin-left: 50px;
+    width: 600px;
+}
 .instructions-list {
     list-style-type: none;
     margin: 0;
@@ -5,13 +9,35 @@
 }
 
 .instructions-box {
-    margin: 100px  40px ;
+    margin: 100px 40px;
+    font-size: 20px;
 }
 
-.start-now-button {
+.instructions-box h3 {
+    font-size: 30px;
+}
+.ships-container {
+    margin: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+}
+
+.ships-container h3 {
+    font-size: 30px;
+}
+
+.sidebar-ship {
+    display: flex;
+    margin: 10px;
+}
+.start-button {
     width: 120px;
     height: 60px;
     font-size: 24px;
     font-family: 'Saira Condensed', sans-serif;
     background-color: lightgreen;
+    margin: 10px;
 }

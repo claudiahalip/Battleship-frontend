@@ -10,7 +10,14 @@ body {
 .game-box {
     display: flex;
     justify-content: space-between;
-    max-width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
 }
 
+h4 {
+    margin: 0;
+    font-size: 18px;
+}
+h3 {
+    margin: 30px 0;
+}

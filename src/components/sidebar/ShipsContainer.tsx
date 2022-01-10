@@ -17,20 +17,24 @@ const ShipsContainer: React.FC = function () {
     const shipsMap = playerShips.map((ship) => {
         if (ship && ship.name !== 'defaultShip') {
             return (
-                <Ship
-                    name={ship.name}
-                    height={ship.height}
-                    width={ship.width}
-                    isSunk={ship.isSunk}
-                    shipSections={ship.shipSections}
-                    key={ship.name}
-                />
+                <div>
+                    <h4>{ship.name}</h4>
+                    <Ship
+                        name={ship.name}
+                        height={ship.height}
+                        width={ship.width}
+                        isSunk={ship.isSunk}
+                        shipSections={ship.shipSections}
+                        key={ship.name}
+                    />
+                </div>
             );
         }
-        return 'No Ships';
+        return null;
     });
     return (
         <div className="ships-container" data-testid="ships-container">
+            <h3>Ships</h3>
             {shipsMap}
         </div>
     );
