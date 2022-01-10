@@ -1,14 +1,17 @@
 import React from 'react';
 import Instructions from './Instructions';
+import ShipsContainer from './ShipsContainer';
 
-const Sidebar: React.FC = function(){
-    return(
+const Sidebar: React.FC = function () {
+    return (
         <div>
-            <Instructions/>
-            <button className='start-now-button' type='button'>Start now</button>
+            <Instructions />
+            <ShipsContainer />
+            <button className="start-now-button" type="button">
+                Start now
+            </button>
         </div>
-    )
-    
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;
