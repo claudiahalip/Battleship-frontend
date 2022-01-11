@@ -11,7 +11,7 @@ export interface ShipInterface {
     shipSections: Array<CellInterface>;
 }
 
-interface ShipsInterface {
+export interface ShipsInterface {
     Carrier: ShipInterface;
     BattleShip: ShipInterface;
     Cruiser: ShipInterface;

@@ -13,7 +13,7 @@ const ShipsContainer: React.FC = function () {
 
     const playerShips: Array<ShipInterface> = [carrier, battleShip, cruiser, submarine, destroyer];
 
-    const shipsMap: (JSX.Element | null)[] = playerShips.map((ship: ShipInterface) => {
+    const shipList: (JSX.Element | null)[] = playerShips.map((ship: ShipInterface) => {
         if (ship && ship.name !== 'defaultShip') {
             return (
                 <div key={ship.name}>
@@ -33,9 +33,12 @@ const ShipsContainer: React.FC = function () {
     return (
         <div className="ships-container" data-testid="ships-container">
             <h3>Ships</h3>
-            {shipsMap}
+            {shipList}
         </div>
     );
 };
 
 export default ShipsContainer;
+function ShipsInterface(ships: import('../../context/PlayerShipsContext').ShipsInterface | null, ShipsInterface: any) {
+    throw new Error('Function not implemented.');
+}
