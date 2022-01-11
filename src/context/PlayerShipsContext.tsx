@@ -39,6 +39,36 @@ export const PlayerShipsContextProvider = function ({ children }: PlayerShipsCon
     const [submarine, setSubmarine] = useState(defaultShip);
     const [destroyer, setDestroyer] = useState(defaultShip);
 
+    const assignShip = (
+        ship: React.SetStateAction<{
+            name: string;
+            width: number;
+            height: number;
+            isSunk: boolean;
+            shipSections: never[];
+        }>
+    ) => {
+        switch (ship.name) {
+            case 'Carrier':
+                setCarrier(ship);
+                break;
+            case 'BattleShip':
+                setBattleShip(ship);
+                break;
+            case 'Cruiser':
+                setCruiser(ship);
+                break;
+            case 'Submarine':
+                setSubmarine(ship);
+                break;
+            case 'Destroyer':
+                setDestroyer(ship);
+                break;
+            default:
+                break;
+        }
+    };
+
     useEffect(() => {
         fetchData(getShipsURL).then((result) => {
             result.forEach(
@@ -50,27 +80,7 @@ export const PlayerShipsContextProvider = function ({ children }: PlayerShipsCon
                         isSunk: boolean;
                         shipSections: never[];
                     }>
-                ) => {
-                    switch (ship.name) {
-                        case 'Carrier':
-                            setCarrier(ship);
-                            break;
-                        case 'BattleShip':
-                            setBattleShip(ship);
-                            break;
-                        case 'Cruiser':
-                            setCruiser(ship);
-                            break;
-                        case 'Submarine':
-                            setSubmarine(ship);
-                            break;
-                        case 'Destroyer':
-                            setDestroyer(ship);
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                ) => assignShip(ship)
             );
         });
     }, []);

@@ -1,20 +1,19 @@
 import React, { useContext } from 'react';
-import { defaultShip, PlayerShipsContext } from '../../context/PlayerShipsContext';
+import { defaultShip, PlayerShipsContext, ShipInterface } from '../../context/PlayerShipsContext';
 import Ship from './Ship';
 
 const ShipsContainer: React.FC = function () {
     const ships = useContext(PlayerShipsContext);
 
-    const carrier = ships?.Carrier || defaultShip;
-    const battleShip = ships?.BattleShip || defaultShip;
-    const cruiser = ships?.Cruiser || defaultShip;
-    const submarine = ships?.Submarine || defaultShip;
-    const destroyer = ships?.Destroyer || defaultShip;
+    const carrier: ShipInterface = ships?.Carrier || defaultShip;
+    const battleShip: ShipInterface = ships?.BattleShip || defaultShip;
+    const cruiser: ShipInterface = ships?.Cruiser || defaultShip;
+    const submarine: ShipInterface = ships?.Submarine || defaultShip;
+    const destroyer: ShipInterface = ships?.Destroyer || defaultShip;
 
-    // Maybe just make the above ^ into an array??
-    const playerShips = [carrier, battleShip, cruiser, submarine, destroyer];
+    const playerShips: Array<ShipInterface> = [carrier, battleShip, cruiser, submarine, destroyer];
 
-    const shipsMap = playerShips.map((ship) => {
+    const shipsMap: (JSX.Element | null)[] = playerShips.map((ship: ShipInterface) => {
         if (ship && ship.name !== 'defaultShip') {
             return (
                 <div key={ship.name}>

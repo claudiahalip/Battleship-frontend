@@ -3,8 +3,8 @@ import waves from '../assets/wave.png';
 
 export interface CellInterface {
     shipName: string | null;
-    row: number;
-    column: number;
+    row?: number;
+    column?: number;
     isHit: boolean;
     isShip: boolean;
 }

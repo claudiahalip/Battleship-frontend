@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SidebarButton from '../buttons/SidebarButton';
 import Instructions from './Instructions';
 import ShipsContainer from './ShipsContainer';
 
@@ -9,18 +10,22 @@ const Sidebar: React.FC = function () {
         setShipsVisible(true);
     };
 
+    const handleStartGame = () => {
+        setShipsVisible(false);
+    };
+
     return (
         <div className="sidebar">
-            {shipsVisible ? <ShipsContainer /> : <Instructions />}
-
             {shipsVisible ? (
-                <button className="start-button" type="button">
-                    Start Game
-                </button>
+                <>
+                    <ShipsContainer />
+                    <SidebarButton text="Start Game" clickHandler={handleStartGame} />
+                </>
             ) : (
-                <button className="start-button" type="button" onClick={handleStartNow}>
-                    Start now
-                </button>
+                <>
+                    <Instructions />
+                    <SidebarButton text="Start now" clickHandler={handleStartNow} />
+                </>
             )}
         </div>
     );
