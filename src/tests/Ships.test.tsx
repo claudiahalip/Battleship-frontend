@@ -4,7 +4,6 @@ import 'jest';
 import axios from 'axios';
 import { render, screen } from '@testing-library/react';
 import { PlayerShipsContext } from '../context/PlayerShipsContext';
-import Sidebar from '../components/sidebar/Sidebar';
 import ShipsContainer from '../components/sidebar/ShipsContainer';
 
 jest.mock('axios');
@@ -41,14 +40,14 @@ describe('<ShipsContainer />', () => {
                     width: 1,
                     height: 1,
                     isSunk: false,
-                    shipSections: [{ shipName: 'Carrier', isHit: false, isShip: true, row: 0, column: 0 }],
+                    shipSections: [{ shipName: 'Cruiser', isHit: false, isShip: true, row: 0, column: 0 }],
                 },
                 Submarine: {
                     name: 'Submarine',
                     width: 1,
                     height: 1,
                     isSunk: false,
-                    shipSections: [{ shipName: 'Cruiser', isHit: false, isShip: true, row: 0, column: 0 }],
+                    shipSections: [{ shipName: 'Submarine', isHit: false, isShip: true, row: 0, column: 0 }],
                 },
                 Destroyer: {
                     name: 'Destroyer',

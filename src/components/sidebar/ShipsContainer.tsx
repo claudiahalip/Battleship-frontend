@@ -17,7 +17,7 @@ const ShipsContainer: React.FC = function () {
     const shipsMap = playerShips.map((ship) => {
         if (ship && ship.name !== 'defaultShip') {
             return (
-                <div>
+                <div key={ship.name}>
                     <h4>{ship.name}</h4>
                     <Ship
                         name={ship.name}
@@ -25,7 +25,6 @@ const ShipsContainer: React.FC = function () {
                         width={ship.width}
                         isSunk={ship.isSunk}
                         shipSections={ship.shipSections}
-                        key={ship.name}
                     />
                 </div>
             );
