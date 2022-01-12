@@ -13,6 +13,10 @@
         "ecmaVersion": 13,
         "sourceType": "module"
     },
+    "globals": {
+        "React": true,
+        "JSX": true
+    },
     "plugins": ["react", "@typescript-eslint", "jest"],
     "rules": {
         "no-use-before-define": "off",

@@ -5,13 +5,17 @@ import Ship from './Ship';
 const ShipsContainer: React.FC = function () {
     const ships = useContext(PlayerShipsContext);
 
-    const carrier: ShipInterface = ships?.Carrier || defaultShip;
-    const battleShip: ShipInterface = ships?.BattleShip || defaultShip;
-    const cruiser: ShipInterface = ships?.Cruiser || defaultShip;
-    const submarine: ShipInterface = ships?.Submarine || defaultShip;
-    const destroyer: ShipInterface = ships?.Destroyer || defaultShip;
+    const playerShips: Array<ShipInterface> = [];
 
-    const playerShips: Array<ShipInterface> = [carrier, battleShip, cruiser, submarine, destroyer];
+    // need to turn off this rule to enable the for-loop
+    /* eslint-disable no-restricted-syntax */
+    if (ships) {
+        // eslint-disable-next-line no-unused-vars
+        for (const [key, value] of Object.entries(ships)) {
+            playerShips.push(value || defaultShip);
+        }
+    }
+    /* eslint-enable no-restricted-syntax */
 
     const shipList: (JSX.Element | null)[] = playerShips.map((ship: ShipInterface) => {
         if (ship && ship.name !== 'defaultShip') {
@@ -39,6 +43,3 @@ const ShipsContainer: React.FC = function () {
 };
 
 export default ShipsContainer;
-function ShipsInterface(ships: import('../../context/PlayerShipsContext').ShipsInterface | null, ShipsInterface: any) {
-    throw new Error('Function not implemented.');
-}
