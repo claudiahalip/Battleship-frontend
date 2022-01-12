@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface ButtonInterface {
+    // eslint-disable-next-line no-unused-vars
     clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
     text: string;
 }

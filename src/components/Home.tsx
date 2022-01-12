@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { SERVER_ERROR } from '../error_messages/error_messages';
+import { homeURL } from '../api/api';
 
 const Home: React.FC = function () {
     const [message, setMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
-        const API_URL = 'http://localhost:8080/';
         const fetchMessage = async () => {
             try {
-                const response = await axios.get(API_URL);
+                const response = await axios.get(homeURL);
                 setMessage(response.data);
             } catch (error: any) {
                 console.log(error);
