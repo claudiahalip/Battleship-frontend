@@ -3,20 +3,20 @@ import fetchData from '../actions/FetchData';
 import { getShipsURL } from '../api/api';
 import { CellInterface } from '../components/Cell';
 
-export interface ShipInterface {
+export type ShipType = {
     name: string;
     width: number;
     height: number;
     isSunk: boolean;
     shipSections: Array<CellInterface>;
-}
+};
 
 export interface ShipsInterface {
-    Carrier: ShipInterface;
-    BattleShip: ShipInterface;
-    Cruiser: ShipInterface;
-    Submarine: ShipInterface;
-    Destroyer: ShipInterface;
+    Carrier: ShipType;
+    BattleShip: ShipType;
+    Cruiser: ShipType;
+    Submarine: ShipType;
+    Destroyer: ShipType;
 }
 
 interface PlayerShipsContextProviderInterface {

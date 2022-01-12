@@ -3,10 +3,10 @@ import waves from '../assets/wave.png';
 
 export interface CellInterface {
     shipName: string | null;
-    row?: number;
-    column?: number;
     isHit: boolean;
     isShip: boolean;
+    row?: number;
+    column?: number;
 }
 
 const Cell: React.FC<CellInterface> = function ({ isShip }) {

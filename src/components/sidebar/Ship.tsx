@@ -1,7 +1,10 @@
 import React from 'react';
-import { ShipInterface } from '../../context/PlayerShipsContext';
-import Cell from '../Cell';
+import Cell, { CellInterface } from '../Cell';
 
+interface ShipInterface {
+    name: string;
+    shipSections: Array<CellInterface>;
+}
 const Ship: React.FC<ShipInterface> = function ({ name, shipSections }) {
     const cellMap = shipSections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key

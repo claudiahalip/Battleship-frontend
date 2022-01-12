@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { defaultShip, PlayerShipsContext, ShipInterface } from '../../context/PlayerShipsContext';
+import { defaultShip, PlayerShipsContext, ShipType } from '../../context/PlayerShipsContext';
 import Ship from './Ship';
 
 const ShipsContainer: React.FC = function () {
     const ships = useContext(PlayerShipsContext);
 
-    const playerShips: Array<ShipInterface> = [];
+    const playerShips: Array<ShipType> = [];
 
     // need to turn off this rule to enable the for-loop
     /* eslint-disable no-restricted-syntax */
@@ -17,18 +17,12 @@ const ShipsContainer: React.FC = function () {
     }
     /* eslint-enable no-restricted-syntax */
 
-    const shipList: (JSX.Element | null)[] = playerShips.map((ship: ShipInterface) => {
+    const shipList: (JSX.Element | null)[] = playerShips.map((ship: ShipType) => {
         if (ship && ship.name !== 'defaultShip') {
             return (
                 <div key={ship.name}>
                     <h4>{ship.name}</h4>
-                    <Ship
-                        name={ship.name}
-                        height={ship.height}
-                        width={ship.width}
-                        isSunk={ship.isSunk}
-                        shipSections={ship.shipSections}
-                    />
+                    <Ship name={ship.name} shipSections={ship.shipSections} />
                 </div>
             );
         }
