@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const patchShip = async (URL: string, body: string) => {
+const patchShip = async (URL: string, body: object) => {
   try {
     const response = await axios.patch(URL, body);
     const data = response.data;

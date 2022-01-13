@@ -52,6 +52,7 @@ describe('<BoardContainer />', () => {
                     everyShipSunk: false,
                     size: 0,
                 },
+                updateBoard: () => {}
             },
         };
 
@@ -67,53 +68,54 @@ describe('<BoardContainer />', () => {
 
     it('renders 2 grids', () => {
         const response = {
-            data: {
-                playerBoard: {
-                    name: 'Player Board',
-                    grid: [
-                        [
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                        ],
-                    ],
-                    shipList: [],
-                    everyShipSunk: false,
-                    size: 0,
-                },
-                computerBoard: {
-                    name: 'Computer Board',
-                    grid: [
-                        [
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                        ],
-                    ],
-                    shipList: [],
-                    everyShipSunk: false,
-                    size: 2,
-                },
+          data: {
+            playerBoard: {
+              name: "Player Board",
+              grid: [
+                [
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                ],
+              ],
+              shipList: [],
+              everyShipSunk: false,
+              size: 0,
             },
+            computerBoard: {
+              name: "Computer Board",
+              grid: [
+                [
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                ],
+              ],
+              shipList: [],
+              everyShipSunk: false,
+              size: 2,
+            },
+            updateBoard: () => {},
+          },
         };
 
         render(
@@ -126,53 +128,54 @@ describe('<BoardContainer />', () => {
 
     it('renders all wave-cells', () => {
         const response = {
-            data: {
-                playerBoard: {
-                    name: 'Player Board',
-                    grid: [
-                        [
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                        ],
-                    ],
-                    shipList: [],
-                    everyShipSunk: false,
-                    size: 0,
-                },
-                computerBoard: {
-                    name: 'Computer Board',
-                    grid: [
-                        [
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                            {
-                                isHit: false,
-                                isShip: false,
-                                shipName: null,
-                            },
-                        ],
-                    ],
-                    shipList: [],
-                    everyShipSunk: false,
-                    size: 2,
-                },
+          data: {
+            playerBoard: {
+              name: "Player Board",
+              grid: [
+                [
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                ],
+              ],
+              shipList: [],
+              everyShipSunk: false,
+              size: 0,
             },
+            computerBoard: {
+              name: "Computer Board",
+              grid: [
+                [
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                  {
+                    isHit: false,
+                    isShip: false,
+                    shipName: null,
+                  },
+                ],
+              ],
+              shipList: [],
+              everyShipSunk: false,
+              size: 2,
+            },
+            updateBoard: () => {}
+          },
         };
 
         render(

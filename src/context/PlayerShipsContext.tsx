@@ -91,6 +91,7 @@ export const PlayerShipsContextProvider = function ({ children }: PlayerShipsCon
         Cruiser: cruiser,
         Submarine: submarine,
         Destroyer: destroyer,
+        
     };
 
     return <PlayerShipsContext.Provider value={ships}> {children} </PlayerShipsContext.Provider>;

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import waves from '../assets/wave.png';
 import patchShip from '../actions/PatchShip'
 import { placeShipURL } from '../api/api';
+import { BoardsContext } from '../context/BoardsContext';
 
 export interface CellInterface {
     shipName: string | null;
@@ -13,6 +14,7 @@ export interface CellInterface {
 
 const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
 
+    const boardContext = useContext(BoardsContext);
    
     const handleDrop = (event: any) => {
         event.preventDefault()
@@ -24,10 +26,8 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
                 "row": row,
                 "col": column
         };
-
-        const shipRequestJSON = JSON.stringify(shipInfo)
-        console.log(shipRequestJSON)
-        patchShip(placeShipURL, shipRequestJSON);
+        patchShip(placeShipURL, shipInfo);
+        boardContext?.updateBoard();
         }
     }
 
@@ -46,7 +46,12 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
     return isShip ? (
         <div className="cell ship" data-testid="cell-ship" />
     ) : (
-        <div onDrop={handleDrop} onDragOver={handleDragOver} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} className="cell waves" data-testid="cell-waves" >
+        <div onDrop={handleDrop} 
+        onDragOver={handleDragOver} 
+        onDragEnter={handleDragEnter} 
+        onDragLeave={handleDragLeave} 
+        className="cell waves" 
+        data-testid="cell-waves" >
             <img className="wave-pic" src={waves} alt="waves" />
         </div>
     );

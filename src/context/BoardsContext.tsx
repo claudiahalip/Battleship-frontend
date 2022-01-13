@@ -13,6 +13,7 @@ export interface BoardInterface {
 export interface BoardsInterface {
     playerBoard: BoardInterface;
     computerBoard: BoardInterface;
+    updateBoard: Function 
 }
 
 interface BoardsContextProviderInterface {
@@ -40,9 +41,17 @@ export const BoardsContextProvider = function ({ children }: BoardsContextProvid
         });
     }, []);
 
+    const updateBoard = async() => {
+        await fetchData(getBoardsURL).then((result) => {
+            setPlayerBoard(result[0]);
+            setComputerBoard(result[1]);
+        });
+    }
+
     const boards = {
         playerBoard,
         computerBoard,
+        updateBoard
     };
     return <BoardsContext.Provider value={boards}>{children}</BoardsContext.Provider>;
 };
