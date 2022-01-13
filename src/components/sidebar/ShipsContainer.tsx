@@ -22,7 +22,7 @@ const ShipsContainer: React.FC = function () {
             return (
                 <div key={ship.name}>
                     <h4>{ship.name}</h4>
-                    <Ship name={ship.name} shipSections={ship.shipSections} />
+                    <Ship name={ship.name} shipSections={ship.shipSections} width={ship.width} height={ship.height} />
                 </div>
             );
         }
