@@ -25,16 +25,27 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
 
         const shipJSON = JSON.stringify(ship)
         event.dataTransfer.setData("ship", shipJSON);
-
+        event.dataTransfer.effectAllowed = "move";
         setTimeout(()=>{
-            event.target.style.opacity = 0;
+            event.target.style.opacity = 0.5;
         }, 0)
+    }
+
+    const handleDragEnd = (event: any) => {
+        if(event.dataTransfer.dropEffect === "none"){
+            setTimeout(() => {
+              event.target.style.opacity = 1;
+            }, 0);
+        }
     }
 
     return (
         <div className="sidebar-ship" 
             data-testid="testShip" 
-            draggable onDragStart={handleDragStart} >
+            draggable 
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+             >
             {cellMap}
         </div>
     );

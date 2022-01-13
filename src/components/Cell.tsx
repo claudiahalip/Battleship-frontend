@@ -37,10 +37,12 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
 
     const handleDragEnter = (event: any) => {
         event.preventDefault()
+        event.dataTransfer.dropEffect = "move";
     }
 
     const handleDragLeave = (event: any) => {
         event.preventDefault()
+        event.dataTransfer.dropEffect = "none"
     }
 
     return isShip ? (

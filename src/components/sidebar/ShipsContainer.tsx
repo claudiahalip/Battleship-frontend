@@ -31,8 +31,12 @@ const ShipsContainer: React.FC = function () {
         }
         return null;
     });
+
+
     return (
-        <div className="ships-container" data-testid="ships-container">
+        <div className="ships-container" 
+        data-testid="ships-container"
+        id="ships-container">
             <h3>Ships</h3>
             {shipList}
         </div>
