@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import waves from '../assets/wave.png';
 import patchShip from '../actions/PatchShip'
 import { placeShipURL } from '../api/api';
-import { BoardsContext } from '../context/BoardsContext';
+import { BoardInterface, BoardsContext } from '../context/BoardsContext';
 
 export interface CellInterface {
     shipName: string | null;
@@ -14,7 +14,7 @@ export interface CellInterface {
 
 const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
 
-    const boardContext = useContext(BoardsContext);
+    const boardsContext = useContext(BoardsContext);
    
     const handleDrop = (event: any) => {
         event.preventDefault()
@@ -26,8 +26,13 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
                 "row": row,
                 "col": column
         };
-        patchShip(placeShipURL, shipInfo);
-        boardContext?.updateBoard();
+        patchShip(placeShipURL, shipInfo).then((response) =>
+          boardsContext?.setPlayerBoard(response)
+        ).catch( error => console.log(error)
+    );
+
+        
+        // boardsContext?.updateBoard();
         }
     }
 

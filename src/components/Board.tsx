@@ -1,3 +1,4 @@
+import console from 'console';
 import React from 'react';
 import { BoardInterface } from '../context/BoardsContext';
 import Cell, { CellInterface } from './Cell';
@@ -6,6 +7,7 @@ interface BoardComponentInterface {
     board: BoardInterface;
 }
 const Board: React.FC<BoardComponentInterface> = function ({ board }) {
+    
     const gridMap = board.grid.map((row, idx) =>
         row.map((cell: CellInterface, jdx: number) => (
             <Cell

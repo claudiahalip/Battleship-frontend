@@ -12,10 +12,7 @@ const ShipsContainer: React.FC = function () {
     if (ships) {
         // eslint-disable-next-line no-unused-vars
         for (const [key, value] of Object.entries(ships)) {
-            if(key !== "updateShips"){
-                playerShips.push(value || defaultShip);
-            }
-            
+            playerShips.push(value || defaultShip);
         }
     }
     /* eslint-enable no-restricted-syntax */
