@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import waves from '../assets/wave.png';
 import patchShip from '../actions/PatchShip'
 import { placeShipURL } from '../api/api';
-import { BoardInterface, BoardsContext } from '../context/BoardsContext';
+import { BoardsContext } from '../context/BoardsContext';
 
 export interface CellInterface {
     shipName: string | null;
@@ -20,7 +20,7 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
         event.preventDefault()
         const shipJSON = event.dataTransfer.getData("ship");
         const shipObject = JSON.parse(shipJSON)
-        if(row && column){
+        if(row !== null && column !== null){
             const shipInfo = {
                 "ship": shipObject,
                 "row": row,
@@ -30,10 +30,7 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column }) {
           boardsContext?.setPlayerBoard(response)
         ).catch( error => console.log(error)
     );
-
-        
-        // boardsContext?.updateBoard();
-        }
+    }
     }
 
     const handleDragOver = (event: any) => {

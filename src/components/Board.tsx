@@ -1,4 +1,3 @@
-import console from 'console';
 import React from 'react';
 import { BoardInterface } from '../context/BoardsContext';
 import Cell, { CellInterface } from './Cell';
