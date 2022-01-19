@@ -71,7 +71,7 @@ describe('<ShipsContainer />', () => {
             </PlayerShipsContext.Provider>
         );
 
-        expect(screen.getAllByTestId('cell-ship')).toHaveLength(5);
+        expect(screen.getAllByTestId('sidebar-cell-ship')).toHaveLength(5);
     });
 
     it('renders each ship name', () => {

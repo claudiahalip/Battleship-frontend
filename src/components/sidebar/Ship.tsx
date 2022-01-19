@@ -1,17 +1,24 @@
 import React from 'react';
-import Cell, { CellInterface } from '../Cell';
 
 interface ShipInterface {
     name: string;
     width: number;
     height: number;
-    shipSections: Array<CellInterface>;
+    shipSections: Array<ShipCellInterface>;
+}
+
+interface ShipCellInterface {
+  shipName: string | null;
 }
 const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSections }) {
 
     const cellMap = shipSections.map((section, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Cell shipName={name} isHit={false} isShip key={name + index} />
+      // eslint-disable-next-line react/no-array-index-key
+      <div
+        className="cell ship"
+        key={`${name} : ${index}`}
+        data-testid="sidebar-cell-ship"
+      />
     ));
 
     const handleDragStart = (event: any) => {
@@ -25,6 +32,14 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
 
         const shipJSON = JSON.stringify(ship)
         event.dataTransfer.setData("ship", shipJSON);
+
+        const distanceFromLeftEdge = event.pageX - event.target.offsetLeft;
+        event.dataTransfer.setData(
+          "distanceFromLeftEdge",
+          distanceFromLeftEdge.toString()
+        );
+
+
         event.dataTransfer.effectAllowed = "move";
         setTimeout(()=>{
             event.target.style.opacity = 0.5;
@@ -40,14 +55,16 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
     }
 
     return (
-        <div className="sidebar-ship" 
-            data-testid="testShip" 
-            draggable 
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-             >
-            {cellMap}
-        </div>
+      <div
+        className="sidebar-ship"
+        data-testid="testShip"
+        id={name}
+        draggable
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
+        {cellMap}
+      </div>
     );
 };
 

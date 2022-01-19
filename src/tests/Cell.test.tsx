@@ -11,10 +11,19 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('<Cell/>', () => {
     it('send a patch request when a ship is dropped', () => {
         const shipData = {name: "ShipTest", width: 1, height: 1, isSunk: false, shipSections:[] }
+        const distanceFromLeftEdge = 0;
         const shipDataJSON = JSON.stringify(shipData)
-        render(<Cell isShip={false} isHit={false} shipName={null}/>)
+        render(<Cell isPlayerBoard isShip={false} isHit={false} shipName={null} row={1} column={1}/>)
         const cellTest = screen.getByTestId("cell-waves");
-        fireEvent.drop(cellTest, {dataTransfer: {ship: shipData, getData: jest.fn(() => shipDataJSON)}})
+        
+        fireEvent.drop(cellTest, {dataTransfer: {ship: shipData,
+            distanceFromLeftEdge, 
+            getData: jest.fn((key) => {
+            if(key === "ship") {
+                return shipDataJSON}
+            if(key ==="distanceFromLeftEdge"){
+                return distanceFromLeftEdge;
+            }})}})
         expect(mockedAxios.patch).toHaveBeenCalledTimes(1);
     })
 })

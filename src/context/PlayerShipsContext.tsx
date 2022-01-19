@@ -1,14 +1,19 @@
 import React, { useState, createContext, useEffect } from 'react';
 import fetchData from '../actions/FetchData';
 import { getShipsURL } from '../api/api';
-import { CellInterface } from '../components/Cell';
 
 export type ShipType = {
     name: string;
     width: number;
     height: number;
     isSunk: boolean;
-    shipSections: Array<CellInterface>;
+    shipSections: Array<ShipCellType>;
+};
+
+type ShipCellType = {
+  shipName: string | null;
+  isHit: boolean;
+  isShip: boolean;
 };
 
 export interface ShipsInterface {
