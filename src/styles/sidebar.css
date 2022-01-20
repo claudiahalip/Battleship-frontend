@@ -45,3 +45,12 @@
 .start-button:hover {
     cursor: pointer;
 }
+
+.sidebar-ship:hover{
+    cursor: grab;
+}
+
+.sidebar-ship:active{
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}

@@ -38,11 +38,10 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
           "distanceFromLeftEdge",
           distanceFromLeftEdge.toString()
         );
-
-
         event.dataTransfer.effectAllowed = "move";
         setTimeout(()=>{
             event.target.style.opacity = 0.5;
+            event.target.style.cursor = "grabbing"
         }, 0)
     }
 

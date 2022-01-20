@@ -50,9 +50,14 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName,
                 "col": column - calculateOffSet(distanceInt)
         };
         patchShip(placeShipURL, shipInfo).then((response) =>{
-          console.log("trying to place the ship")
           boardsContext?.setPlayerBoard(response)
-        }).catch( error => console.log(error)
+        }).catch( error => {
+          event.dataTransfer.dropEffect = "none";
+          const shipDiv = document.getElementById(shipObject.name);
+            if(shipDiv){
+              shipDiv.style.opacity = "1"
+            }
+          }
     );
     }
     }
