@@ -8,12 +8,12 @@ export interface CellInterface {
     shipName: string | null;
     isHit: boolean;
     isShip: boolean;
-    row?: number;
-    column?: number;
+    row: number;
+    column: number;
     isPlayerBoard: boolean
 }
 
-const Cell: React.FC<CellInterface> = function ({ isShip, row, column, isPlayerBoard }) {
+const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName, isPlayerBoard }) {
 
     const boardsContext = useContext(BoardsContext);
 
@@ -49,9 +49,10 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, isPlayerB
                 "row": row,
                 "col": column - calculateOffSet(distanceInt)
         };
-        patchShip(placeShipURL, shipInfo).then((response) =>
+        patchShip(placeShipURL, shipInfo).then((response) =>{
+          console.log("trying to place the ship")
           boardsContext?.setPlayerBoard(response)
-        ).catch( error => console.log(error)
+        }).catch( error => console.log(error)
     );
     }
     }
@@ -70,9 +71,51 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, isPlayerB
         event.dataTransfer.dropEffect = "none"
     }
 
+    const calculateDistanceForShipEdge = (cellEdgeDistance: number) => {
+       let totalDistance = cellEdgeDistance;
+       for(let i = column-1; i>=0; i--){
+          const testCell = boardsContext?.playerBoard.grid[row][i];
+          if(testCell.isShip && testCell.shipName === shipName){
+            totalDistance += 40;
+          }
+          else
+          {break}
+       }
+       return totalDistance
+    }
+
+    const handleDragStart = (event: any) => {
+      const shipList = boardsContext?.playerBoard.shipList
+      let draggedShip;
+      if(shipList){
+          shipList.forEach( ship => {
+              if (ship.name === shipName) {
+                  draggedShip = ship
+
+              }
+          } )
+        const shipJSON = JSON.stringify(draggedShip);
+        const cellEdgeDistance = event.pageX - event.target.offsetLeft;
+        const distanceFromLeftEdge = calculateDistanceForShipEdge(cellEdgeDistance)
+        event.dataTransfer.setData(
+          "distanceFromLeftEdge",
+          distanceFromLeftEdge.toString()
+        ); 
+        event.dataTransfer.setData("ship", shipJSON);
+        if (shipName) {
+          const shipImage = document.getElementById(shipName);
+          event.dataTransfer.setDragImage(shipImage, distanceFromLeftEdge, 0);
+        }
+      }
+      
+      
+    }
+
     return isPlayerBoard ? (
       isShip ? (
-        <div className="cell ship" data-testid="cell-ship" />
+        <div draggable onDragStart={handleDragStart}
+        className="cell ship"
+        data-testid="cell-ship" />
       ) : (
         <div
           onDrop={handleDrop}
