@@ -52,7 +52,6 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName,
         patchShip(placeShipURL, shipInfo).then((response) =>{
           boardsContext?.setPlayerBoard(response)
         }).catch( error => {
-          event.dataTransfer.dropEffect = "none";
           const shipDiv = document.getElementById(shipObject.name);
             if(shipDiv){
               shipDiv.style.opacity = "1"

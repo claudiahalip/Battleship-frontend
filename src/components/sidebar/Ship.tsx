@@ -41,7 +41,6 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
         event.dataTransfer.effectAllowed = "move";
         setTimeout(()=>{
             event.target.style.opacity = 0.5;
-            event.target.style.cursor = "grabbing"
         }, 0)
     }
 

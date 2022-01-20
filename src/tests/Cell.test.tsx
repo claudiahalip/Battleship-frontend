@@ -26,4 +26,5 @@ describe('<Cell/>', () => {
             }})}})
         expect(mockedAxios.patch).toHaveBeenCalledTimes(1);
     })
+
 })
