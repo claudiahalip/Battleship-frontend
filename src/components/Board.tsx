@@ -6,9 +6,11 @@ interface BoardComponentInterface {
     board: BoardInterface;
 }
 const Board: React.FC<BoardComponentInterface> = function ({ board }) {
+    
     const gridMap = board.grid.map((row, idx) =>
         row.map((cell: CellInterface, jdx: number) => (
             <Cell
+                isPlayerBoard = {board.name === "Player Board"}
                 column={jdx}
                 row={idx}
                 shipName={cell.shipName}

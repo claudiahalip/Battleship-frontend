@@ -33,6 +33,9 @@
 .ship {
     background-color: saddlebrown;
 }
+.ship:hover{
+    cursor: grab;
+}
 
 .wave-pic {
     width: 40px;

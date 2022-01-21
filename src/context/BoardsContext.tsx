@@ -13,6 +13,7 @@ export interface BoardInterface {
 export interface BoardsInterface {
     playerBoard: BoardInterface;
     computerBoard: BoardInterface;
+    setPlayerBoard: Function
 }
 
 interface BoardsContextProviderInterface {
@@ -43,6 +44,7 @@ export const BoardsContextProvider = function ({ children }: BoardsContextProvid
     const boards = {
         playerBoard,
         computerBoard,
+        setPlayerBoard,
     };
     return <BoardsContext.Provider value={boards}>{children}</BoardsContext.Provider>;
 };

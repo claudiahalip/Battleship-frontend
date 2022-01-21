@@ -22,14 +22,18 @@ const ShipsContainer: React.FC = function () {
             return (
                 <div key={ship.name}>
                     <h4>{ship.name}</h4>
-                    <Ship name={ship.name} shipSections={ship.shipSections} />
+                    <Ship name={ship.name} shipSections={ship.shipSections} width={ship.width} height={ship.height} />
                 </div>
             );
         }
         return null;
     });
+
+
     return (
-        <div className="ships-container" data-testid="ships-container">
+        <div className="ships-container" 
+        data-testid="ships-container"
+        id="ships-container">
             <h3>Ships</h3>
             {shipList}
         </div>
