@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'jest';
 import axios from 'axios';
 import { render, screen } from '@testing-library/react';
-import { SERVER_ERROR } from '../error_messages/error_messages';
+import SERVER_ERROR from '../error_messages/error_messages';
 import Home from '../components/Home';
 
 jest.mock('axios');

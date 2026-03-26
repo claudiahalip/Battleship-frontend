@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { SERVER_ERROR } from '../error_messages/error_messages';
+import SERVER_ERROR from '../error_messages/error_messages';
 import { homeURL } from '../api/api';
 
 const Home: React.FC = function () {

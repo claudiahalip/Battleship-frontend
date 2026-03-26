@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useMemo } from 'react';
 import fetchData from '../actions/FetchData';
 import { getBoardsURL } from '../api/api';
 
@@ -41,10 +41,10 @@ export const BoardsContextProvider = function ({ children }: BoardsContextProvid
         });
     }, []);
 
-    const boards = {
+    const boards = useMemo(() => ({
         playerBoard,
         computerBoard,
         setPlayerBoard,
-    };
+    }), [playerBoard, computerBoard]);
     return <BoardsContext.Provider value={boards}>{children}</BoardsContext.Provider>;
 };

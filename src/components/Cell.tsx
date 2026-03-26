@@ -6,6 +6,7 @@ import { BoardsContext } from '../context/BoardsContext';
 
 export interface CellInterface {
     shipName: string | null;
+    // eslint-disable-next-line react/no-unused-prop-types
     isHit: boolean;
     isShip: boolean;
     row: number;
@@ -51,7 +52,7 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName,
         };
         patchShip(placeShipURL, shipInfo).then((response) =>{
           boardsContext?.setPlayerBoard(response)
-        }).catch( error => {
+        }).catch( () => {
           const shipDiv = document.getElementById(shipObject.name);
             if(shipDiv){
               shipDiv.style.opacity = "1"
@@ -67,17 +68,19 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName,
 
     const handleDragEnter = (event: any) => {
         event.preventDefault()
+        // eslint-disable-next-line no-param-reassign
         event.dataTransfer.dropEffect = "move";
     }
 
     const handleDragLeave = (event: any) => {
         event.preventDefault()
+        // eslint-disable-next-line no-param-reassign
         event.dataTransfer.dropEffect = "none"
     }
 
     const calculateDistanceForShipEdge = (cellEdgeDistance: number) => {
        let totalDistance = cellEdgeDistance;
-       for(let i = column-1; i>=0; i--){
+       for(let i = column-1; i>=0; i -= 1){
           const testCell = boardsContext?.playerBoard.grid[row][i];
           if(testCell.isShip && testCell.shipName === shipName){
             totalDistance += 40;
@@ -115,25 +118,24 @@ const Cell: React.FC<CellInterface> = function ({ isShip, row, column, shipName,
       
     }
 
-    return isPlayerBoard ? (
-      isShip ? (
-        <div draggable onDragStart={handleDragStart}
-        className="cell ship"
-        data-testid="cell-ship" />
-      ) : (
-        <div
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          className="cell waves"
-          data-testid="cell-waves"
-        >
+    if (!isPlayerBoard) {
+      return (
+        <div className="cell waves" data-testid="cell-waves">
           <img className="wave-pic" src={waves} alt="waves" />
         </div>
-      )
+      );
+    }
+
+    return isShip ? (
+      <div draggable onDragStart={handleDragStart}
+        className="cell ship"
+        data-testid="cell-ship" />
     ) : (
       <div
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
         className="cell waves"
         data-testid="cell-waves"
       >

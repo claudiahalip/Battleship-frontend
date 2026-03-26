@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useMemo } from 'react';
 import fetchData from '../actions/FetchData';
 import { getShipsURL } from '../api/api';
 
@@ -90,14 +90,13 @@ export const PlayerShipsContextProvider = function ({ children }: PlayerShipsCon
         });
     }, []);
 
-    const ships = {
+    const ships = useMemo(() => ({
         Carrier: carrier,
         BattleShip: battleShip,
         Cruiser: cruiser,
         Submarine: submarine,
         Destroyer: destroyer,
-        
-    };
+    }), [carrier, battleShip, cruiser, submarine, destroyer]);
 
     return <PlayerShipsContext.Provider value={ships}> {children} </PlayerShipsContext.Provider>;
 };

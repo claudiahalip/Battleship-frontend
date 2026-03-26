@@ -12,10 +12,10 @@ interface ShipCellInterface {
 }
 const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSections }) {
 
-    const cellMap = shipSections.map((section, index) => (
-      // eslint-disable-next-line react/no-array-index-key
+    const cellMap = shipSections.map((_section, index) => (
       <div
         className="cell ship"
+        // eslint-disable-next-line react/no-array-index-key
         key={`${name} : ${index}`}
         data-testid="sidebar-cell-ship"
       />
@@ -38,8 +38,10 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
           "distanceFromLeftEdge",
           distanceFromLeftEdge.toString()
         );
+        // eslint-disable-next-line no-param-reassign
         event.dataTransfer.effectAllowed = "move";
         setTimeout(()=>{
+            // eslint-disable-next-line no-param-reassign
             event.target.style.opacity = 0.5;
         }, 0)
     }
@@ -47,6 +49,7 @@ const Ship: React.FC<ShipInterface> = function ({ name, width, height, shipSecti
     const handleDragEnd = (event: any) => {
         if(event.dataTransfer.dropEffect === "none"){
             setTimeout(() => {
+              // eslint-disable-next-line no-param-reassign
               event.target.style.opacity = 1;
             }, 0);
         }
